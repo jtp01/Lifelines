@@ -16,6 +16,7 @@
 		170C06FB28195DD0007F7CA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170C06F928195DD0007F7CA5 /* LaunchScreen.storyboard */; };
 		170C07032819600E007F7CA5 /* activityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170C07022819600E007F7CA5 /* activityViewController.swift */; };
 		170C07062819A3FA007F7CA5 /* Lifelines+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170C07042819A3FA007F7CA5 /* Lifelines+CoreDataClass.swift */; };
+		17C00287281B0243001A8C26 /* lifelinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C00286281B0243001A8C26 /* lifelinesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		170C06FC28195DD0007F7CA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		170C07022819600E007F7CA5 /* activityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = activityViewController.swift; sourceTree = "<group>"; };
 		170C07042819A3FA007F7CA5 /* Lifelines+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lifelines+CoreDataClass.swift"; sourceTree = "<group>"; };
+		17C00286281B0243001A8C26 /* lifelinesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lifelinesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				170C06EB28195DCD007F7CA5 /* AppDelegate.swift */,
 				170C06ED28195DCD007F7CA5 /* SceneDelegate.swift */,
 				170C06EF28195DCD007F7CA5 /* lifelinesViewController.swift */,
+				17C00286281B0243001A8C26 /* lifelinesTableViewCell.swift */,
 				170C07022819600E007F7CA5 /* activityViewController.swift */,
 				170C06F128195DCD007F7CA5 /* Main.storyboard */,
 				170C06F728195DD0007F7CA5 /* Assets.xcassets */,
@@ -157,6 +160,7 @@
 			files = (
 				170C07032819600E007F7CA5 /* activityViewController.swift in Sources */,
 				170C06F028195DCD007F7CA5 /* lifelinesViewController.swift in Sources */,
+				17C00287281B0243001A8C26 /* lifelinesTableViewCell.swift in Sources */,
 				170C06F628195DCD007F7CA5 /* Lifelines.xcdatamodeld in Sources */,
 				170C07062819A3FA007F7CA5 /* Lifelines+CoreDataClass.swift in Sources */,
 				170C06EC28195DCD007F7CA5 /* AppDelegate.swift in Sources */,
