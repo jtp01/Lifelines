@@ -3,6 +3,7 @@
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -90,7 +91,7 @@
             </objects>
             <point key="canvasLocation" x="744.61538461538464" y="67.535545023696685"/>
         </scene>
-        <!--Activity View Controller-->
+        <!--activityTitle-->
         <scene sceneID="fAh-VG-xet">
             <objects>
                 <viewController id="mwu-N9-X5X" customClass="activityViewController" customModule="Lifelines" customModuleProvider="target" sceneMemberID="viewController">
@@ -114,26 +115,19 @@
                                                     <rect key="frame" x="323" y="6" width="49" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NlV-4r-XF8">
-                                                    <rect key="frame" x="20" y="11" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6Z-tw-cbp">
-                                <rect key="frame" x="28" y="140" width="106" height="34"/>
+                                <rect key="frame" x="16" y="140" width="106" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Your Deadline" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tpz-q8-bju">
-                                <rect key="frame" x="154" y="140" width="160" height="34"/>
+                                <rect key="frame" x="139" y="140" width="160" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -149,13 +143,23 @@
                         <viewLayoutGuide key="safeArea" id="OCs-w4-re3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="lmq-vk-LdY"/>
+                    <navigationItem key="navigationItem" title="activityTitle" id="lmq-vk-LdY">
+                        <barButtonItem key="leftBarButtonItem" id="ldw-gi-80U">
+                            <imageReference key="image" image="chevron.left" catalog="system" symbolScale="large"/>
+                            <connections>
+                                <action selector="backButtonActivity:" destination="mwu-N9-X5X" id="B48-EY-7L3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dateTextField" destination="Tpz-q8-bju" id="9eQ-1o-lxp"/>
+                        <outlet property="deadlineTitle" destination="lmq-vk-LdY" id="dq4-Xu-mVG"/>
                         <outlet property="notAButton" destination="e6Z-tw-cbp" id="AdS-hs-ub1"/>
+                        <segue destination="JkV-a7-Hui" kind="unwind" identifier="backToLifelines" unwindAction="unwindToLifelines:" id="RIB-l6-DSM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ROA-Yb-a19" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="JkV-a7-Hui" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1513.8461538461538" y="67.535545023696685"/>
         </scene>
@@ -179,6 +183,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

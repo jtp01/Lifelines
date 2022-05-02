@@ -14,7 +14,14 @@ class lifelinesViewController: UIViewController {
 
     @IBOutlet weak var lifelinesTableView: UITableView!
     
+    //unwind segue
+    @IBAction func unwindToLifelines(_ seg: UIStoryboardSegue) {
+        
+    }
+    
+    //global variables
     var items: [Lifelines]?
+    var lifelineIndex: Int?
     
     //Accessing Managed Object in Persistent Container
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -32,18 +39,12 @@ class lifelinesViewController: UIViewController {
         
     }
     
-    //Prepare for next view controller
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var nextVC = segue.destination as? activityViewController
-        nextVC?.receiveLifelines = tableView(<#T##tableView: UITableView##UITableView#>, didSelectRowAt: <#T##IndexPath#>)
-        
-    }
-    
     //Fetch the data from database.
     func fetchLifelines() {
         do {
             self.items = try context.fetch(Lifelines.fetchRequest())
+            
+            //reload the table view
             DispatchQueue.main.async {
                 self.lifelinesTableView.reloadData()
             }
@@ -73,10 +74,13 @@ class lifelinesViewController: UIViewController {
             let titleDeadline = lifelinesAlert.textFields![0]
             
             let newDeadline = Lifelines(context: self.context)
+            
+            //set the data to...
             newDeadline.activityTitle = titleDeadline.text
             newDeadline.activityDate = Date()
             newDeadline.activityGroups = self.groups[0]
             
+            //save the data to core data
             do {
                 try self.context.save()
             }
@@ -84,17 +88,18 @@ class lifelinesViewController: UIViewController {
                 print (error)
             }
             
+            //fetch the data and reload the table view
             self.fetchLifelines()
             
         }
         
-        
+        //cancel alert
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel) {
             (action) in
             lifelinesAlert.dismiss(animated: true)
         }
         
-        // button added
+        //add 2 button
         lifelinesAlert.addAction(saveButton)
         lifelinesAlert.addAction(cancelButton)
         
@@ -103,11 +108,6 @@ class lifelinesViewController: UIViewController {
         
         
     }
-    
-    @objc func datePickerValueChanged (sender: UIDatePicker) {
-        
-    }
-    
 
 }
 
@@ -122,6 +122,8 @@ extension lifelinesViewController: UITableViewDelegate, UITableViewDataSource  {
     //cell data index
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let lifelines = tableView.dequeueReusableCell(withIdentifier: "LifelinesCell", for: indexPath) as! lifelinesTableViewCell
+       
+        //set the deadline remaining time
         let deadlines = self.items![indexPath.row]
         let currentDate = Date()
         let calendar = Calendar.current
@@ -136,6 +138,7 @@ extension lifelinesViewController: UITableViewDelegate, UITableViewDataSource  {
         
         var countdown: Int = 0
         
+        //logic to show how much time left
         if deadlineDate == currDate{
             lifelines.activityDeadlineLbl.text = "Today!"
         } else if deadlineMonth == currMonth {
@@ -146,71 +149,54 @@ extension lifelinesViewController: UITableViewDelegate, UITableViewDataSource  {
             lifelines.activityDeadlineLbl.text = String(countdown) + "days left"
         }
         
+        //assign name to titlelabel in table cell
         lifelines.activityTitleLbl.text = deadlines.activityTitle
         
-        
+        //return the table cell
         return lifelines
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let deadlinesToEdit = self.items?[indexPath.row]
-        performSegue(withIdentifier: "lifelinesToTasks", sender: nil)
+        lifelineIndex = indexPath.row
+        performSegue(withIdentifier: "lifelinesToTasks", sender: self)
         
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            self.items!.remove(at: indexPath.row)
-            tableView.reloadData()
+    //Prepare for next view controller
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "lifelinesToTasks" {
+            
+            
+            let selectedLifeline = self.items![lifelineIndex ?? 0]
+            
+            //prepare data for passing
+            if let vc = segue.destination as? activityViewController {
+                vc.topTitle = selectedLifeline.activityTitle ?? "Failed"
+            }
         }
     }
     
+    //swipe action for delete data
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
+       //decide what row to delete
         let deadlinesToEdit = self.items![indexPath.row]
-
-        
-        // gak jadi pakai tombol swipe edit untuk pop up alert
-//        let editAction = UIContextualAction(style: .normal, title: "Edit") {
-//            (editAction, view, completionHandler) in
-//            let alert = UIAlertController(title: "Edit Deadline Names", message: "What do you want to call your deadline now? Please write an appropriate name.", preferredStyle: .alert)
-//            alert.addTextField()
-//
-//
-//            let textField = alert.textFields![0]
-//            textField.text = deadlinesToEdit.activityTitle
-//
-//            let saveButton = UIAlertAction(title: "Add", style: .default) {
-//                (action) in
-//                let textField = alert.textFields![0]
-//                deadlinesToEdit.activityTitle = textField.text
-//
-//                do {
-//                    try self.context.save()
-//                } catch {
-//
-//                }
-//                self.fetchLifelines()
-//            }
-//
-//            let cancelButton = UIAlertAction(title: "Cancel", style: .cancel) {
-//                (action) in
-//                alert.dismiss(animated: true)
-//            }
-//        }
     
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (deleteAction, view, completionHandler) in
+        //create the action button and what it does
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") {
+            (deleteAction, view, completionHandler) in
             self.context.delete(deadlinesToEdit)
             
+            //save data
             do {
                 try self.context.save()
             } catch {
                 
             }
             
+            //re-fetch data
             self.fetchLifelines()
         }
-        
         
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
@@ -218,6 +204,7 @@ extension lifelinesViewController: UITableViewDelegate, UITableViewDataSource  {
     
 }
 
+//drag and drop delegate
 extension lifelinesViewController: UITableViewDragDelegate {
     func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         let dragItem = UIDragItem(itemProvider: NSItemProvider())
@@ -225,6 +212,7 @@ extension lifelinesViewController: UITableViewDragDelegate {
         return [dragItem]
     }
     
+    //move the row
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let move = self.items![sourceIndexPath.row]
         self.items?.remove(at: sourceIndexPath.row)
