@@ -15,8 +15,12 @@
 		170C06F828195DD0007F7CA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 170C06F728195DD0007F7CA5 /* Assets.xcassets */; };
 		170C06FB28195DD0007F7CA5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 170C06F928195DD0007F7CA5 /* LaunchScreen.storyboard */; };
 		170C07032819600E007F7CA5 /* activityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170C07022819600E007F7CA5 /* activityViewController.swift */; };
-		170C07062819A3FA007F7CA5 /* Lifelines+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170C07042819A3FA007F7CA5 /* Lifelines+CoreDataClass.swift */; };
 		17C00287281B0243001A8C26 /* lifelinesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C00286281B0243001A8C26 /* lifelinesTableViewCell.swift */; };
+		17C0028C28225F4A001A8C26 /* Lifelines+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C0028828225F4A001A8C26 /* Lifelines+CoreDataClass.swift */; };
+		17C0028D28225F4A001A8C26 /* Lifelines+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C0028928225F4A001A8C26 /* Lifelines+CoreDataProperties.swift */; };
+		17C0028E28225F4A001A8C26 /* LifelinesTasks+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C0028A28225F4A001A8C26 /* LifelinesTasks+CoreDataClass.swift */; };
+		17C0028F28225F4A001A8C26 /* LifelinesTasks+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C0028B28225F4A001A8C26 /* LifelinesTasks+CoreDataProperties.swift */; };
+		17C0029128226324001A8C26 /* activityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C0029028226324001A8C26 /* activityTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +34,12 @@
 		170C06FA28195DD0007F7CA5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		170C06FC28195DD0007F7CA5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		170C07022819600E007F7CA5 /* activityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = activityViewController.swift; sourceTree = "<group>"; };
-		170C07042819A3FA007F7CA5 /* Lifelines+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lifelines+CoreDataClass.swift"; sourceTree = "<group>"; };
 		17C00286281B0243001A8C26 /* lifelinesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lifelinesTableViewCell.swift; sourceTree = "<group>"; };
+		17C0028828225F4A001A8C26 /* Lifelines+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lifelines+CoreDataClass.swift"; sourceTree = "<group>"; };
+		17C0028928225F4A001A8C26 /* Lifelines+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lifelines+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		17C0028A28225F4A001A8C26 /* LifelinesTasks+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LifelinesTasks+CoreDataClass.swift"; sourceTree = "<group>"; };
+		17C0028B28225F4A001A8C26 /* LifelinesTasks+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LifelinesTasks+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		17C0029028226324001A8C26 /* activityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = activityTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,8 +76,9 @@
 				170C06EB28195DCD007F7CA5 /* AppDelegate.swift */,
 				170C06ED28195DCD007F7CA5 /* SceneDelegate.swift */,
 				170C06EF28195DCD007F7CA5 /* lifelinesViewController.swift */,
-				17C00286281B0243001A8C26 /* lifelinesTableViewCell.swift */,
 				170C07022819600E007F7CA5 /* activityViewController.swift */,
+				17C00286281B0243001A8C26 /* lifelinesTableViewCell.swift */,
+				17C0029028226324001A8C26 /* activityTableViewCell.swift */,
 				170C06F128195DCD007F7CA5 /* Main.storyboard */,
 				170C06F728195DD0007F7CA5 /* Assets.xcassets */,
 				170C06F928195DD0007F7CA5 /* LaunchScreen.storyboard */,
@@ -82,7 +91,10 @@
 		170C07082819A43F007F7CA5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				170C07042819A3FA007F7CA5 /* Lifelines+CoreDataClass.swift */,
+				17C0028828225F4A001A8C26 /* Lifelines+CoreDataClass.swift */,
+				17C0028928225F4A001A8C26 /* Lifelines+CoreDataProperties.swift */,
+				17C0028A28225F4A001A8C26 /* LifelinesTasks+CoreDataClass.swift */,
+				17C0028B28225F4A001A8C26 /* LifelinesTasks+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -160,11 +172,15 @@
 			files = (
 				170C07032819600E007F7CA5 /* activityViewController.swift in Sources */,
 				170C06F028195DCD007F7CA5 /* lifelinesViewController.swift in Sources */,
+				17C0028E28225F4A001A8C26 /* LifelinesTasks+CoreDataClass.swift in Sources */,
 				17C00287281B0243001A8C26 /* lifelinesTableViewCell.swift in Sources */,
+				17C0029128226324001A8C26 /* activityTableViewCell.swift in Sources */,
+				17C0028F28225F4A001A8C26 /* LifelinesTasks+CoreDataProperties.swift in Sources */,
 				170C06F628195DCD007F7CA5 /* Lifelines.xcdatamodeld in Sources */,
-				170C07062819A3FA007F7CA5 /* Lifelines+CoreDataClass.swift in Sources */,
 				170C06EC28195DCD007F7CA5 /* AppDelegate.swift in Sources */,
 				170C06EE28195DCD007F7CA5 /* SceneDelegate.swift in Sources */,
+				17C0028D28225F4A001A8C26 /* Lifelines+CoreDataProperties.swift in Sources */,
+				17C0028C28225F4A001A8C26 /* Lifelines+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

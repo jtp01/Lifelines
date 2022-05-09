@@ -29,7 +29,6 @@ class lifelinesViewController: UIViewController {
     //Load the view
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         lifelinesTableView.delegate = self
         lifelinesTableView.dataSource = self
         lifelinesTableView.dragDelegate = self

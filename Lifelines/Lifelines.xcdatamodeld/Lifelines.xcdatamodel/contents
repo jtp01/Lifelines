@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Lifelines" representedClassName="Lifelines" syncable="YES" codeGenerationType="category">
+    <entity name="Lifelines" representedClassName="Lifelines" syncable="YES">
         <attribute name="activityDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="activityGroups" optional="YES" attributeType="String"/>
         <attribute name="activityTitle" optional="YES" attributeType="String"/>
         <relationship name="connection" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="LifelinesTasks" inverseName="lifelines" inverseEntity="LifelinesTasks"/>
     </entity>
-    <entity name="LifelinesTasks" representedClassName="LifelinesTasks" parentEntity="Lifelines" syncable="YES" codeGenerationType="class">
+    <entity name="LifelinesTasks" representedClassName="LifelinesTasks" parentEntity="Lifelines" syncable="YES">
         <attribute name="isDone" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="tasks" optional="YES" attributeType="String"/>
         <relationship name="lifelines" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lifelines" inverseName="connection" inverseEntity="Lifelines"/>
     </entity>
     <elements>
-        <element name="Lifelines" positionX="-63" positionY="-18" width="128" height="89"/>
-        <element name="LifelinesTasks" positionX="-63" positionY="9" width="128" height="74"/>
+        <element name="Lifelines" positionX="-244.078125" positionY="1.41796875" width="128" height="103"/>
+        <element name="LifelinesTasks" positionX="-63" positionY="9" width="128" height="88"/>
     </elements>
 </model>
